@@ -1,5 +1,3 @@
-# stockflow-mvp
-StockFlow is a multi-tenant inventory management system built to demonstrate user authentication, product management, database operations, and organization-level data isolation.
 # StockFlow — Inventory Management MVP
 
 A simple inventory management web application that helps businesses manage products, track stock quantities, and identify low-stock items from a centralized dashboard.
