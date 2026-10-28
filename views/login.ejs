@@ -1,0 +1,6 @@
+<%- include('partials/header', { title }) %>
+<section class="auth-layout"><div class="auth-copy"><span class="eyebrow">WELCOME BACK</span><h1>Your inventory,<br>at a glance.</h1><p>Sign in to check your products, stock levels, and what needs attention.</p><div class="mini-stat"><span class="mini-icon">↗</span><span>Make stock decisions with confidence.</span></div></div>
+<div class="panel auth-panel"><div class="panel-heading"><h2>Log in to StockFlow</h2><p>Use your account credentials to continue.</p></div>
+<% if (errors.length) { %><div class="alert alert-error"><ul><% errors.forEach(e => { %><li><%= e %></li><% }) %></ul></div><% } %>
+<form method="post" action="/login" class="form-stack"><label>Email address<input name="email" type="email" autocomplete="email" required value="<%= email %>" placeholder="you@example.com"></label><label>Password<input name="password" type="password" autocomplete="current-password" required placeholder="Your password"></label><button class="button button-primary button-wide" type="submit">Log in <span>→</span></button></form><p class="auth-switch">New to StockFlow? <a href="/signup">Create an account</a></p></div></section>
+<%- include('partials/footer') %>

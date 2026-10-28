@@ -1,0 +1,6 @@
+<%- include('partials/header', { title }) %>
+<section class="page-heading"><div><span class="eyebrow">PREFERENCES</span><h1>Settings</h1><p class="muted">Configure the defaults for your workspace.</p></div></section>
+<section class="panel settings-panel"><div class="settings-intro"><span class="settings-icon">⚙</span><div><h2>Inventory settings</h2><p class="muted">These settings apply to <strong><%= settings.name %></strong>.</p></div></div>
+<% if (errors.length) { %><div class="alert alert-error"><ul><% errors.forEach(e => { %><li><%= e %></li><% }) %></ul></div><% } %>
+<form method="post" action="/settings" class="settings-form"><label for="defaultThreshold">Default low-stock threshold</label><p class="muted">Products without their own threshold use this value.</p><div class="setting-control"><input id="defaultThreshold" name="defaultThreshold" type="number" min="0" max="1000000" step="1" required value="<%= settings.default_low_stock_threshold %>"><span>units</span></div><div class="setting-example"><strong>Example</strong><p>If this is set to 5, a product with 5 or fewer units is marked as low stock.</p></div><div class="form-actions"><button class="button button-primary" type="submit">Save settings →</button></div></form></section>
+<%- include('partials/footer') %>

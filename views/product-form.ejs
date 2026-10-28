@@ -1,0 +1,14 @@
+<%- include('partials/header', { title }) %>
+<section class="page-heading"><div><a class="back-link" href="/products">← Back to products</a><h1><%= title %></h1><p class="muted">Enter the product details below. Fields marked * are required.</p></div></section>
+<div class="form-layout"><section class="panel form-panel"><% if (errors.length) { %><div class="alert alert-error"><ul><% errors.forEach(e => { %><li><%= e %></li><% }) %></ul></div><% } %>
+<form method="post" action="<%= formAction %>" class="form-stack">
+<div class="form-section-title"><span>01</span><div><h2>Product information</h2><p>Identify the item in your catalog.</p></div></div>
+<label>Product name *<input name="name" required maxlength="120" value="<%= product.name || '' %>" placeholder="e.g. Wireless mouse"></label>
+<label>SKU (Stock Keeping Unit) *<input name="sku" required maxlength="60" pattern="[A-Za-z0-9._/-]+" value="<%= product.sku || '' %>" placeholder="e.g. MOUSE-001"><small>A unique code for this product within your organization.</small></label>
+<label>Description <span class="optional">Optional</span><textarea name="description" rows="3" maxlength="1000" placeholder="A short product description"><%= product.description || '' %></textarea></label>
+<div class="form-section-title"><span>02</span><div><h2>Stock and pricing</h2><p>Set your current inventory and prices.</p></div></div>
+<div class="field-grid"><label>Quantity on hand *<input name="quantity" type="number" min="0" max="1000000000" step="1" required value="<%= product.quantity ?? 0 %>"></label><label>Low-stock threshold <span class="optional">Optional</span><input name="threshold" type="number" min="0" max="1000000" step="1" value="<%= product.threshold ?? product.low_stock_threshold ?? '' %>" placeholder="Use default"></label></div>
+<div class="field-grid"><label>Cost price <span class="optional">Optional</span><div class="input-prefix"><span>₹</span><input name="costPrice" type="number" min="0" step="0.01" value="<%= product.costPrice ?? product.cost_price ?? '' %>" placeholder="0.00"></div></label><label>Selling price <span class="optional">Optional</span><div class="input-prefix"><span>₹</span><input name="sellingPrice" type="number" min="0" step="0.01" value="<%= product.sellingPrice ?? product.selling_price ?? '' %>" placeholder="0.00"></div></label></div>
+<div class="form-actions"><a class="button button-secondary" href="/products">Cancel</a><button class="button button-primary" type="submit"><%= submitLabel %> →</button></div>
+</form></section><aside class="side-note"><div class="note-icon">i</div><h3>About stock thresholds</h3><p>When a product's quantity is less than or equal to its threshold, StockFlow flags it as low stock.</p><p>Leave the threshold blank to use your organization's default setting.</p><a href="/settings" class="text-link">Configure default →</a></aside></div>
+<%- include('partials/footer') %>

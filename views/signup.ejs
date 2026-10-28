@@ -1,0 +1,11 @@
+<%- include('partials/header', { title }) %>
+<section class="auth-layout"><div class="auth-copy"><span class="eyebrow">INVENTORY, SIMPLIFIED</span><h1>Get your stock<br>under control.</h1><p>One clean workspace to track products, quantities, and low-stock items.</p><div class="mini-stat"><span class="mini-icon">✓</span><span>Know what you have, before you run out.</span></div></div>
+<div class="panel auth-panel"><div class="panel-heading"><h2>Create your workspace</h2><p>Start managing your inventory in minutes.</p></div>
+<% if (errors.length) { %><div class="alert alert-error"><ul><% errors.forEach(e => { %><li><%= e %></li><% }) %></ul></div><% } %>
+<form method="post" action="/signup" class="form-stack">
+<label>Organization name<input name="organizationName" required maxlength="80" value="<%= values.organizationName || '' %>" placeholder="e.g. My Test Store"></label>
+<label>Email address<input name="email" type="email" autocomplete="email" required maxlength="150" value="<%= values.email || '' %>" placeholder="you@example.com"></label>
+<label>Password<input name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required placeholder="At least 8 characters"></label>
+<label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" minlength="8" maxlength="128" required placeholder="Enter password again"></label>
+<button class="button button-primary button-wide" type="submit">Create account <span>→</span></button></form><p class="auth-switch">Already have an account? <a href="/login">Log in</a></p></div></section>
+<%- include('partials/footer') %>
